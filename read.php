@@ -30,7 +30,7 @@ foreach ($contacts as $key => $contact) {
     <div class="container mt-5">
         <div class="row mb-3">
             <div class="col-2">
-                <a href="" class="btn btn-success btn-sm">Nouveau contact</a>
+                <a href="create.php" class="btn btn-success btn-sm">Nouveau contact</a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
