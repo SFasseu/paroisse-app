@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link rel="stylesheet" href="{{asset('css/form-contact.css')}}">
 </head>
 <body>
     <div class="container">
         <div class="form-group">
+            <h2>New conntact</h2>
             <form action="{{ Route('contact.store') }}" method="post">
                 <div class="group">
                     <label for="name">Nom complet:</label>
@@ -18,7 +20,7 @@
                     <input type="number" name="phone" id="phone" required>
                 </div>
                 <div class="group">
-                    <label for="address">Nom complet:</label>
+                    <label for="address">Email:</label>
                     <input type="eamil" name="email" id="email">
                 </div>
                 <div class="group">

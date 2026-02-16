@@ -21,7 +21,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        
     }
 
     /**
@@ -46,7 +47,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('contact.edit',compact($contact));
     }
 
     /**

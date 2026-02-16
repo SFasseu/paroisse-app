@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+    font-family: Helvetica, sans-serif;
+}
+body{
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+    font-size: 1em;
+}
+.container{
+    padding: 20px 30px;
+    background-color: #7f1ea811;
+    border-radius: 12px;
+    width: 60%;
+    max-width: 400px;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+.form-group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.form-group h2{
+    position: relative;
+    text-align: center;
+    color: #222;
+    font-weight: 500;
+    font-size: 1.6em;
+}
+.form-group h2::before{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 25%;
+    height: 2px;
+    border-radius: 20px;
+    background-color: #ae528b;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #433;
+}
+.group{
+    display: flex;
+    flex-direction: column;
+}
+.group.btn{
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+.group input{
+    background: transparent;
+    padding: 12px 8px;
+    border-radius: 8px;
+    outline: 0;
+    border: 1px solid #333;
+    margin-bottom: 10px;
+}
+.group input:focus,.group input:focus-visible,.group input:active{
+    border: 1px solid #995ab3;
+}
+.group.btn .btn{
+    padding: 12px 15px;
+    border: 1px solid #995ab3;
+    color: #995ab3;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s ease background, 0.2s ease color;
+}
+.group.btn .btn:hover{
+    background-color: #995ab3;
+    border-color: #995ab3;
+    color: #f1f1f1;
+}
