@@ -10,7 +10,7 @@
     <div class="container">
         <div class="form-group">
             <h2>New conntact</h2>
-            <form action="{{ Route('contact.store') }}" method="post">
+            <form action="{{ Route('conta') }}" method="post">
                 <div class="group">
                     <label for="name">Nom complet:</label>
                     <input type="text" name="name" id="name" required>

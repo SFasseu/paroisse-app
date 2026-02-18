@@ -20,9 +20,12 @@ Route::get('/', function () {
 });
 // Route::resource('contact',ContactController::class);
 Route::get('/contact',[ContactController::class,'index']);
-Route::get('/contact/id={contact}',[ContactController::class,'show']);
-Route::get('/contact/id={contact}/edit',[ContactController::class,'edit']);
-Route::post('/contact/id={contact}/edit',[ContactController::class,'update']);
-Route::get('/contact/id={contact}/delete',[ContactController::class,'destroy']);
 Route::get('/contact/create',[ContactController::class,'create']);
 Route::post('/contact/create',[ContactController::class,'store']);
+Route::get('/contact/{contact}/show',[ContactController::class,'show']);
+Route::get('/contact/{contact}/edit',[ContactController::class,'edit']);
+Route::post('/contact/{contact}/edit',[ContactController::class,'update']);
+Route::delete('/contact/{contact}/delete',[ContactController::class,'destroy']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
