@@ -35,9 +35,10 @@ class ContactController extends Controller
         'name'=>'required',
         'email'=>'required|email',
         'address'=>'required',
+        'phone'=>'required',
         ]);
-        contact::create($request->all());
-        return redirect()->route('contact.index')->with('success','contact ajouté');
+        Contact::create($request->all());
+        return redirect('/contact')->with('success','contact ajouté');
 
     }
 
@@ -46,7 +47,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return view('contact.show',compact('contacts'));
+        return view('contact.show',compact('contact'));
     }
 
     /**
@@ -54,7 +55,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('contact.edit',compact('contacts'));
+        return view('contact.edit',compact('contact'));
     }
 
     /**
@@ -66,9 +67,10 @@ class ContactController extends Controller
         'name'=>'required',
         'email'=>'required|email',
         'address'=>'required',
+        'phone'=>'required',
         ]);
-        $contact->uptade($request->all());
-       return redirect()->route('contact.index')->with('success','contact modifié');
+        $contact->update($request->all());
+       return redirect('/contact')->with('success','contact modifié');
 
     }
 
@@ -78,6 +80,6 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('contact.index')->with('success','contact supprimé');
+        return redirect('/contact')->with('success','contact supprimé');
     }
 }
