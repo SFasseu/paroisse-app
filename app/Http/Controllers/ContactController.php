@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -30,7 +30,17 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email',
+            'phone' => 'required|string|max:20|unique:contacts',
+            'address' => 'required|string|max:255',
+        ]);
+
+        Contact::create($validated);
+
+        return redirect()->route('contact.index')
+                        ->with('success', 'Contact créé avec succès');
     }
 
     /**
@@ -38,7 +48,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('contact.show', compact('contact'));
     }
 
     /**
@@ -46,7 +56,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('contact.edit', compact('contact'));
     }
 
     /**
@@ -54,7 +64,15 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email',
+            'phone' => 'required|string|max:20|unique:contacts,phone,' . $contact->id,
+            'address' => 'required|string|max:255',
+        ]);
+
+        $contact->update($validated);
+
     }
 
     /**
@@ -62,6 +80,9 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->route('contact.index')
+                        ->with('success', 'Contact supprimé avec succès');
     }
 }

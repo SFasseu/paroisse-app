@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class,'index']);
 
-Route::get('/contact', [ContactController::class,'index']);
+Route::resource('contact', ContactController::class);
