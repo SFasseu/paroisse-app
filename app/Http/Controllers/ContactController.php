@@ -7,17 +7,14 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    protected $fillable = ['name', 'email', 'address'];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $contacts = Contact::all();  //select * from contacts;
+        $contacts = Contact::all();   //select * from contacts
 
         return view('contact.index', compact('contacts'));
-
-        dd($contacts);
     }
 
     /**
@@ -25,7 +22,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.create', compact('contacts'));
+        return view('contact.create');
     }
 
     /**
@@ -39,18 +36,17 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id) {
-        $contact = Contact::findOrFail($id);
-        return view('contact.show', compact('contact'));
+    public function show(Contact $contact)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        $contact = Contact::findOrFail($id);
-         return view('contact.edit', compact('contact'));
+        //
     }
 
     /**

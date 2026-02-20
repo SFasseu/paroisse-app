@@ -11,27 +11,27 @@
 <body>
     <div class="container">
         <div class="row mt-5">
-            <a href="/contact/create" class="btn btn-primary">Nouveau Contact</a>
+            <a href="/contact/create" class="btn btn-success w-25">New Contact</a>
             <table class="table table-responsive">
-    <thead>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Actions</th>
-    </thead>
-    <tbody>
-        @foreach ($contacts as $contact)
-            <tr>
-                <td>{{ $contact->id }}</td>
-                <td>{{ $contact->name }}</td>
-                <td>{{ $contact->email }}</td>
-                <td>{{ $contact->address }}</td>
-                <td>#</td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    @foreach ($contacts as $contact)
+                        <tr>
+                            <td>{{ $contact->id }}</td>
+                            <td>{{ $contact->name }}</td>
+                            <td>{{ $contact->email }}</td>
+                            <td>{{ $contact->address }}</td>
+                            <td>#</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
