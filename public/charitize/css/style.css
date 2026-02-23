@@ -1,6 +1,9 @@
 /********** Template CSS **********/
 :root {
     --bs-tertiary: #797E88;
+    --bs-primary: #e68908 !important;
+    --bs-warning: #e68908 !important;
+
 }
 
 .back-to-top {
