@@ -10,7 +10,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{ asset("./charitize/img/logo.png") }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,8 +112,8 @@
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-lg-flex ms-auto">
-                        <a href="donation.html" class="nav-item nav-link auth-link">Login</a>
-                        <a href="contact.html" class="nav-item nav-link auth-link">Register</a>
+                        <a href="./login" class="nav-item nav-link auth-link">Login</a>
+                        <a href="./register" class="nav-item nav-link auth-link">Register</a>
                     </div>
                 </div>
             </nav>
