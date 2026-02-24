@@ -29,13 +29,13 @@
       </label>
     </div>
     @if (Route::has('password.request'))
-    <a class="text-primary fw-bold" href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
+    <a class="fw-bolder" style="color: #1a685b;" href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
     @endif
   </div>
-  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{{ __('Login') }}</button>
+  <button type="submit" class="btn w-100 py-8 fs-4 mb-4 rounded-2" style="background-color: #1a685b; color: #ffffff;">{{ __('Login') }}</button>
   <div class="d-flex align-items-center justify-content-center">
     <p class="fs-4 mb-0 fw-bold">Do you not have an account?</p>
-    <a class="text-primary fw-bold ms-2" href="{{ route('register') }}">{{ __('Create an account') }}</a>
+    <a class="fw-bolder ms-2" style="color: #1a685b;" href="{{ route('register') }}">{{ __('Create an account') }}</a>
   </div>
 </form>
 @endsection

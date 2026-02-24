@@ -35,10 +35,10 @@
     <div class="invalid-feedback">{{ $message }}</div>
     @enderror
   </div>
-  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{{ __('Register') }}</button>
+  <button type="submit" class="btn w-100 py-8 fs-4 mb-4 rounded-2" style="background-color: #1a685b; color: #ffffff;">{{ __('Register') }}</button>
   <div class="d-flex align-items-center justify-content-center">
     <p class="fs-4 mb-0 fw-bold">Already have an account?</p>
-    <a class="text-primary fw-bold ms-2" href="{{ route('login') }}">{{ __('Login') }}</a>
+    <a class="fw-bolder ms-2" style="color: #1a685b;" href="{{ route('login') }}">{{ __('Login') }}</a>
   </div>
 </form>
 @endsection

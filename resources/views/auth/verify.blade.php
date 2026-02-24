@@ -2,9 +2,9 @@
 
 @section('content')
 <a href="{{ url('/') }}" class="text-nowrap logo-img text-center d-block py-3 w-100">
-  <img src="{{ asset('images/logos/logo.svg') }}" alt="">
+  <img width="8%" src="{{ asset('charitize/img/logo.png') }}" alt="">
+  <h3 style="color: #e68908;font-family: 'josefin Sans' !important; font-weight: bold;">Holy Spirit Bepanda</h3>
 </a>
-<p class="text-center">Your Social Campaigns</p>
 @if (session('resent'))
 <div class="alert alert-success mb-3" role="alert">
   {{ __('A fresh verification link has been sent to your email address.') }}
@@ -14,6 +14,6 @@
 <p>{{ __('If you did not receive the email') }},
 <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
   @csrf
-  <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+  <button type="submit" class="btn btn-link p-0 m-0 align-baseline" style="background-color: #1a685b; color: #ffffff;">{{ __('click here to request another') }}</button>.
 </form></p>
 @endsection
