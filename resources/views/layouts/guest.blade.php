@@ -105,15 +105,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav me-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="{{ route("home") }}" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Anouncement</a>
                         <a href="donation.html" class="nav-item nav-link">Activity</a>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-lg-flex ms-auto">
-                        <a href="./login" class="nav-item nav-link auth-link">Login</a>
-                        <a href="./register" class="nav-item nav-link auth-link">Register</a>
+                        <a href="{{ route("login") }}" class="nav-item nav-link auth-link">Login</a>
+                        <a href="{{ route("register") }}" class="nav-item nav-link auth-link">Register</a>
                     </div>
                 </div>
             </nav>
