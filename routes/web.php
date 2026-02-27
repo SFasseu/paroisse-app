@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,3 +35,16 @@ Route::delete('/contact/{contact}/delete', [ContactController::class,'destroy'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// 💳 Routes Gestion des Paiements - Authentifiées
+Route::middleware(['auth'])->group(function () {
+    // CRUD Paiements
+    Route::resource('payments', PaymentController::class);
+    
+    // Actions spéciales
+    Route::post('/payments/{payment}/confirm', [PaymentController::class, 'confirm'])->name('payments.confirm');
+    Route::post('/payments/{payment}/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
+    
+    // Rapport & Filtres
+    Route::get('/payments/report/generate', [PaymentController::class, 'report'])->name('payments.report');
+});

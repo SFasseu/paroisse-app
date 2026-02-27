@@ -1,0 +1,788 @@
+/* ============================================================
+   🎨 ÉGLISE - Styles de Paroisse Saint Esprit Bepanda
+   ============================================================ */
+
+:root {
+    /* Couleurs Église */
+    --church-primary-color: #4169E1;      /* Bleu Royal - Confiance, Spiritualité */
+    --church-accent-color: #D4AF37;       /* Or - Sainteté, Valeur */
+    --church-secondary-color: #2F5233;    /* Vert Foncé - Croissance, Vie */
+    --church-dark-color: #1a1a1a;
+    --church-light-color: #f8f9fa;
+    --church-cream: #fffbf0;
+    --church-burgundy: #8B4455;
+
+    /* Ombres */
+    --church-shadow-xs: 0 1px 2px rgba(65, 105, 225, 0.05);
+    --church-shadow-sm: 0 2px 4px rgba(65, 105, 225, 0.1);
+    --church-shadow-md: 0 4px 8px rgba(65, 105, 225, 0.15);
+    --church-shadow-lg: 0 8px 16px rgba(65, 105, 225, 0.2);
+    --church-shadow-xl: 0 12px 24px rgba(65, 105, 225, 0.25);
+    --church-shadow-2xl: 0 20px 40px rgba(65, 105, 225, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.6s ease;
+}
+
+/* ============================================================
+   📝 TYPOGRAPHIE & TEXTE
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6, .church-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--church-primary-color);
+}
+
+.church-title {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   🎯 BOUTONS
+   ============================================================ */
+
+.btn {
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--church-primary-color), #1E3A8A);
+    box-shadow: var(--church-shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--church-shadow-lg);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: var(--church-shadow-md);
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--church-shadow-lg);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    box-shadow: var(--church-shadow-md);
+}
+
+.btn-info:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--church-shadow-lg);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.btn-warning:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--church-shadow-lg);
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-icon i {
+    transition: all var(--transition-base);
+}
+
+.btn-primary:hover i,
+.btn-success:hover i {
+    transform: translateX(3px);
+}
+
+/* ============================================================
+   📋 FORMULAIRES
+   ============================================================ */
+
+.church-label {
+    font-weight: 600;
+    color: var(--church-primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control,
+.form-select {
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all var(--transition-base);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--church-primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(65, 105, 225, 0.25);
+    color: #333;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc2626;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+textarea.form-control:focus {
+    background: linear-gradient(135deg, rgba(65, 105, 225, 0.05), transparent);
+}
+
+.church-form-container {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    animation: slideUp 0.6s ease;
+}
+
+.church-form-body {
+    padding: 2rem;
+    background: #fff;
+}
+
+.form-header {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--church-primary-color);
+}
+
+.form-header::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-accent-color));
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+/* ============================================================
+   📊 CARTES STATISTIQUES
+   ============================================================ */
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: var(--church-shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--church-light-color), #f3f4f6);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    animation: float 5s ease-in-out infinite;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-secondary-color));
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+
+/* ============================================================
+   🎪 HÉRO SECTION
+   ============================================================ */
+
+.church-hero {
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-secondary-color));
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    animation: slideUp 0.6s ease;
+}
+
+.church-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.church-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -5%;
+    width: 300px;
+    height: 300px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.church-hero h1,
+.church-hero h2,
+.church-hero p {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+/* ============================================================
+   📱 CARTES & CONTAINERS
+   ============================================================ */
+
+.card {
+    border: none;
+    border-radius: 1rem;
+    transition: all var(--transition-base);
+}
+
+.card-hover {
+    cursor: pointer;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--church-shadow-2xl);
+}
+
+.card-overlay {
+    position: relative;
+}
+
+.card-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), transparent);
+    border-radius: 1rem;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.card-overlay:hover::after {
+    opacity: 1;
+}
+
+/* ============================================================
+   🏷️ BADGES & TAGS
+   ============================================================ */
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    animation: slideUp 0.3s ease;
+}
+
+.badge-pulse {
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+.badge-glow {
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px currentColor;
+    }
+    50% {
+        box-shadow: 0 0 15px currentColor;
+    }
+}
+
+/* ============================================================
+   🔔 ALERTE & NOTIFICATIONS
+   ============================================================ */
+
+.alert {
+    border: 2px solid;
+    border-radius: 0.75rem;
+    animation: slideInDown 0.3s ease;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
+    border-color: #10b981;
+    color: #059669;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);
+    border-color: #dc2626;
+    color: #991b1b;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+    border-color: #d4af37;
+    color: #854c1a;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+    border-color: #3b82f6;
+    color: #1e40af;
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(65, 105, 225, 0.1), transparent);
+    border-left: 5px solid var(--church-primary-color);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    animation: slideUp 0.4s ease;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+    border-left: 5px solid var(--church-accent-color);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    animation: slideUp 0.5s ease;
+}
+
+/* ============================================================
+   📋 TABLEAUX
+   ============================================================ */
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem !important;
+    border-bottom: 2px solid var(--church-primary-color);
+}
+
+.table tbody tr {
+    transition: all var(--transition-base);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(65, 105, 225, 0.05), transparent);
+    transform: scale(1.01);
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* ============================================================
+   🧭 NAVIGATION
+   ============================================================ */
+
+.navbar {
+    border-bottom: 3px solid var(--church-primary-color);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white !important;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--church-accent-color);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: var(--church-shadow-lg);
+    animation: slideDown 0.3s ease;
+}
+
+.dropdown-item {
+    transition: all var(--transition-base);
+}
+
+.dropdown-item:hover {
+    background: var(--church-primary-color);
+    color: white;
+}
+
+/* ============================================================
+   📊 PROGRESS & RATINGS
+   ============================================================ */
+
+.progress {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--church-shadow-sm);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--church-primary-color), var(--church-accent-color)) !important;
+    border-radius: 10px;
+    transition: width var(--transition-base);
+    box-shadow: var(--church-shadow-md);
+}
+
+/* ============================================================
+   ✨ ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ============================================================
+   🎨 UTILITAIRES
+   ============================================================ */
+
+.text-church-primary {
+    color: var(--church-primary-color) !important;
+    font-weight: 600;
+}
+
+.text-church-accent {
+    color: var(--church-accent-color) !important;
+    font-weight: 600;
+}
+
+.text-church-secondary {
+    color: var(--church-secondary-color) !important;
+    font-weight: 600;
+}
+
+.bg-church-light {
+    background: linear-gradient(135deg, rgba(65, 105, 225, 0.05), rgba(47, 82, 51, 0.05)) !important;
+}
+
+.bg-church-primary-light {
+    background: rgba(65, 105, 225, 0.1) !important;
+}
+
+.shadow-church {
+    box-shadow: var(--church-shadow-lg) !important;
+}
+
+.rounded-church {
+    border-radius: 1rem !important;
+}
+
+.section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--church-primary-color), transparent);
+    margin: 2rem 0;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--church-primary-color), var(--church-accent-color), var(--church-secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* ============================================================
+   📱 RESPONSIVE DESIGN
+   ============================================================ */
+
+@media (max-width: 992px) {
+    .church-title {
+        font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .church-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .church-form-body {
+        padding: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+
+    .table thead th {
+        font-size: 0.85rem;
+        padding: 0.75rem !important;
+    }
+
+    .table tbody td {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .church-hero {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .church-title {
+        font-size: 1.5rem;
+    }
+
+    .church-form-container {
+        border-radius: 0.75rem;
+    }
+
+    .church-form-body {
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+/* ============================================================
+   🖨️ IMPRESSION
+   ============================================================ */
+
+@media print {
+    .navbar,
+    .btn,
+    .dropdown,
+    .pagination {
+        display: none;
+    }
+
+    .church-hero {
+        background: white;
+        color: black;
+        border: 2px solid var(--church-primary-color);
+    }
+
+    .card {
+        page-break-inside: avoid;
+        border: 1px solid #ccc;
+    }
+
+    body {
+        background: white;
+    }
+}
