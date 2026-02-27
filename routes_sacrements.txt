@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+// ══════════════════════════════════════════════════════════════════════════
+// MODULE GESTION DES SACREMENTS — Paroisse Saint-Esprit de Bépanda
+// Ajouter ces lignes dans routes/web.php APRÈS les routes existantes
+// ══════════════════════════════════════════════════════════════════════════
+
 use App\Http\Controllers\Sacrements\SacrementsController;
 use App\Http\Controllers\Sacrements\NiveauFormationController;
 use App\Http\Controllers\Sacrements\CoursController;
@@ -13,36 +14,6 @@ use App\Http\Controllers\Sacrements\CatechisteController;
 use App\Http\Controllers\Sacrements\CatechumeneController;
 use App\Http\Controllers\Sacrements\ProgressionController;
 use App\Http\Controllers\Sacrements\SacrementRecuController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/contact', [ContactController::class,'index']);
-Route::get('/contact/{contact}/show', [ContactController::class,'show']);
-
-Route::get('/contact/create', [ContactController::class,'create']);
-Route::post('/contact/create', [ContactController::class,'store']);
-
-Route::get('/contact/{contact}/edit', [ContactController::class,'edit']);
-Route::put('/contact/{contact}/edit', [ContactController::class,'update']);
-
-Route::delete('/contact/{contact}/delete', [ContactController::class,'destroy']);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('sacrements')->name('sacrements.')->middleware('auth')->group(function () {
 

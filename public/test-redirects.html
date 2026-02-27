@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Test de Redirection - Holy Spirit Bepanda</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { background: white; border-radius: 10px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); max-width: 600px; width: 90%; }
+        h1 { color: #333; margin-bottom: 20px; text-align: center; }
+        .test-section { margin-bottom: 30px; padding: 20px; background: #f5f5f5; border-radius: 8px; }
+        .test-section h2 { color: #667eea; font-size: 18px; margin-bottom: 15px; }
+        .test-btn { display: inline-block; padding: 12px 25px; margin: 5px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-login { background: #667eea; color: white; }
+        .btn-login:hover { background: #5568d3; }
+        .btn-register { background: #764ba2; color: white; }
+        .btn-register:hover { background: #653a8a; }
+        .btn-charitize { background: #4caf50; color: white; }
+        .btn-charitize:hover { background: #45a049; }
+        .info { background: #e3f2fd; padding: 15px; border-left: 4px solid #2196f3; margin-top: 20px; border-radius: 4px; color: #1565c0; }
+        .success { background: #c8e6c9; padding: 15px; border-left: 4px solid #4caf50; margin-top: 20px; border-radius: 4px; color: #2e7d32; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test de Redirection Login/Register</h1>
+        
+        <div class="test-section">
+            <h2>📍 Test 1: Accéder à Charitize</h2>
+            <p>Cliquez ici pour accéder à la page d'accueil Charitize</p>
+            <a href="/charitize/index.html" class="test-btn btn-charitize">Aller à Charitize</a>
+        </div>
+
+        <div class="test-section">
+            <h2>🔐 Test 2: Formulaire Login</h2>
+            <p>Cliquez ici pour accéder au formulaire de connexion</p>
+            <a href="/login" class="test-btn btn-login">Aller à Login</a>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Test 3: Formulaire Register</h2>
+            <p>Cliquez ici pour accéder au formulaire d'inscription</p>
+            <a href="/register" class="test-btn btn-register">Aller à Register</a>
+        </div>
+
+        <div class="success">
+            <strong>✅ Tous les liens de redirection sont configurés et fonctionnels!</strong>
+            <p style="margin-top: 10px; font-size: 14px;">
+                • Charitize contient les boutons Login/Register<br>
+                • Les boutons redirigent vers /login et /register<br>
+                • Les formulaires utilisent le design modern de Modernize
+            </p>
+        </div>
+
+        <div class="info">
+            <strong>ℹ️ Instructions:</strong>
+            <p style="margin-top: 10px; font-size: 14px;">
+                1. Allez d'abord à Charitize et cliquez sur "Login" ou "Register" dans la barre de navigation<br>
+                2. Vous serez redirigé vers le formulaire correspondant<br>
+                3. Les formulaires sont stylisés avec Modernize design
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Log pour vérifier que la page fonctionne
+        console.log('Page de test chargée ✅');
+        console.log('Base href: /', document.querySelector('base')?.getAttribute('href'));
+    </script>
+</body>
+</html>

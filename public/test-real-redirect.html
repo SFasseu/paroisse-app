@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test RÉEL de Redirection - Charitize → Login/Register</title>
+    <base href="/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #333; margin-bottom: 30px; text-align: center; font-size: 32px; }
+        .info-box {
+            background: #e8f4f8;
+            border-left: 5px solid #0288d1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #01579b;
+        }
+        .test-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+        .test-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .test-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px 10px 10px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn-login {
+            background: #667eea;
+            color: white;
+        }
+        .btn-login:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-register {
+            background: #764ba2;
+            color: white;
+        }
+        .btn-register:hover {
+            background: #653a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+        .btn-charitize {
+            background: #4caf50;
+            color: white;
+        }
+        .btn-charitize:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        .success-message {
+            background: #c8e6c9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #2e7d32;
+        }
+        .warning-message {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #e65100;
+        }
+        .nav-simulation {
+            padding: 20px;
+            background: #333;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            background: #555;
+        }
+        .path-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 TEST RÉEL DE REDIRECTION LOGIN/REGISTER</h1>
+
+        <div class="info-box">
+            <strong>📋 Instructions :</strong>
+            <p>Suivez les étapes ci-dessous pour vérifier que les redirections fonctionnent correctement entre Charitize, Login et Register.</p>
+        </div>
+
+        <!-- TEST 1 -->
+        <div class="test-section">
+            <h2>📍 ÉTAPE 1: Accéder à la page d'accueil Charitize</h2>
+            <p>Cette page contient les boutons Login et Register dans la barre de navigation.</p>
+            <a href="/charitize/index.html" class="test-button btn-charitize">→ Aller à Charitize</a>
+            <div class="path-info">
+                <strong>URL:</strong> <code>http://127.0.0.1:8000/charitize/index.html</code>
+            </div>
+            <div class="success-message">
+                ℹ️ <strong>À Charitize:</strong> Cherchez la barre de navigation en haut. Vous y verrez un bouton "Login" et un bouton "Register".
+            </div>
+        </div>
+
+        <!-- TEST 2 -->
+        <div class="test-section">
+            <h2>🔐 ÉTAPE 2: Cliquer sur le bouton LOGIN dans Charitize</h2>
+            <p>Quand vous cliquez sur "Login" dans la barre de navigation de Charitize, vous devriez être redirigé ici:</p>
+            <a href="/login" class="test-button btn-login">→ Aller à la page LOGIN</a>
+            <div class="path-info">
+                <strong>URL attendue:</strong> <code>http://127.0.0.1:8000/login</code><br>
+                <strong>Lien dans Charitize:</strong> <code>href="../login"</code>
+            </div>
+            <div class="success-message">
+                ✅ <strong>Si vous arrivez ici:</strong> La redirection Login fonctionne correctement!<br>
+                Vous devriez voir un formulaire avec les champs Email et Password.
+            </div>
+        </div>
+
+        <!-- TEST 3 -->
+        <div class="test-section">
+            <h2>📝 ÉTAPE 3: Cliquer sur le bouton REGISTER dans Charitize</h2>
+            <p>Quand vous cliquez sur "Register" dans la barre de navigation de Charitize, vous devriez être redirigé ici:</p>
+            <a href="/register" class="test-button btn-register">→ Aller à la page REGISTER</a>
+            <div class="path-info">
+                <strong>URL attendue:</strong> <code>http://127.0.0.1:8000/register</code><br>
+                <strong>Lien dans Charitize:</strong> <code>href="../register"</code>
+            </div>
+            <div class="success-message">
+                ✅ <strong>Si vous arrivez ici:</strong> La redirection Register fonctionne correctement!<br>
+                Vous devriez voir un formulaire avec les champs Name, Email et Password.
+            </div>
+        </div>
+
+        <!-- TEST 4: Simulation de la barre de navigation -->
+        <div class="test-section">
+            <h2>🎯 ÉTAPE 4: Simulation de la barre de navigation Charitize</h2>
+            <p>Voici à quoi ressemble la barre de navigation dans Charitize:</p>
+            <div class="nav-simulation">
+                <a href="/charitize/index.html" class="nav-link">Home</a>
+                <a href="/charitize/about.html" class="nav-link">About</a>
+                <a href="/charitize/service.html" class="nav-link">Announcement</a>
+                <a href="/charitize/donation.html" class="nav-link">Activity</a>
+                <a href="/charitize/contact.html" class="nav-link">Contact</a>
+                <span style="margin-left: auto; display: flex; gap: 10px;">
+                    <a href="/login" class="nav-link" style="background: #667eea; padding: 10px 15px; border-radius: 5px;">Login</a>
+                    <a href="/register" class="nav-link" style="background: #764ba2; padding: 10px 15px; border-radius: 5px;">Register</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- MISES À JOUR APPORTÉES -->
+        <div class="test-section">
+            <h2>✅ MODIFICATIONS EFFECTUÉES</h2>
+            <ul style="line-height: 1.8; color: #333;">
+                <li>✅ <strong>Charitize index.html:</strong>
+                    <ul>
+                        <li>Bouton Login: <code>href="../login"</code> (au lieu de donation.html)</li>
+                        <li>Bouton Register: <code>href="../register"</code> (au lieu de contact.html)</li>
+                        <li>Balise base: <code>&lt;base href="/"&gt;</code> pour normaliser les chemins</li>
+                    </ul>
+                </li>
+                <li>✅ <strong>Login et Register:</strong>
+                    <ul>
+                        <li>Formulaires stylisés avec le design Modernize</li>
+                        <li>Validation côté serveur (Laravel)</li>
+                        <li>CSRF protection activée</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <div class="warning-message">
+            <strong>⚠️ SI CELA NE FONCTIONNE PAS:</strong>
+            <ol style="margin-top: 10px; padding-left: 20px;">
+                <li>Vider le cache du navigateur (Ctrl+Shift+Delete ou Cmd+Shift+Delete)</li>
+                <li>Actualiser la page (Ctrl+F5 ou Cmd+Shift+R)</li>
+                <li>Vérifier que le serveur Laravel est en cours d'exécution: <br>
+                    <code>php artisan serve --host=127.0.0.1 --port=8000</code>
+                </li>
+                <li>Vérifier que vous accédez via: <code>http://127.0.0.1:8000</code><br>
+                    (Et NON pas via <code>http://localhost</code> ou un autre port)
+                </li>
+            </ol>
+        </div>
+
+        <!-- RÉSUMÉ -->
+        <div class="success-message" style="margin-top: 40px; font-size: 16px; padding: 25px;">
+            <strong>✅ RÉSUMÉ:</strong><br><br>
+            <strong>Charitize</strong> → (clique Login) → <strong>Login Page</strong><br>
+            <strong>Charitize</strong> → (clique Register) → <strong>Register Page</strong><br>
+            <strong>Login</strong> → (clique Create account) → <strong>Register Page</strong><br>
+            <strong>Register</strong> → (clique Sign In) → <strong>Login Page</strong><br><br>
+            <em style="color: #1565c0;">Les formulaires de Login et Register utilisent le design professionnel de Modernize.</em>
+        </div>
+    </div>
+
+    <script>
+        console.log('✅ Page de test chargée');
+        console.log('Base href:', document.querySelector('base')?.getAttribute('href'));
+        console.log('Serveur: 127.0.0.1:8000');
+    </script>
+</body>
+</html>
