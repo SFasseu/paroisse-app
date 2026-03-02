@@ -34,134 +34,20 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('person.index') }}" aria-expanded="false">
+                <i class="ti ti-user"></i>
+                <span class="hide-menu">Person</span>
               </a>
             </li>
             <!-- ---------------------------------- -->
             <!-- Dashboard -->
             <!-- ---------------------------------- -->
-            <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between" target="_blank"
-                href="https://bootstrapdemos.adminmart.com/modernize/dist/main/index.html" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-                    <i class="ti ti-aperture"></i>
-                  </span>
-                  <span class="hide-menu">Analytical</span>
-                </div>
-                <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between" target="_blank"
-                href="https://bootstrapdemos.adminmart.com/modernize/dist/main/index2.html" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-                    <i class="ti ti-shopping-cart"></i>
-                  </span>
-                  <span class="hide-menu">eCommerce</span>
-                </div>
-                <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-                    <i class="ti ti-layout-grid"></i>
-                  </span>
-                  <span class="hide-menu">Front Pages</span>
-                </div>
-              </a>
-              <ul aria-expanded="false" class="collapse first-level">
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-landingpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Homepage</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-aboutpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">About Us</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-blogpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-blogdetailpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog Details</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-contactpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Contact Us</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-portfoliopage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Portfolio</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between" target="_blank"
-                    href="https://bootstrapdemos.adminmart.com/modernize/dist/main/frontend-pricingpage.html">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Pricing</span>
-                    </div>
-                    <span class="hide-menu badge bg-secondary-subtle text-secondary fs-1 py-1">Pro</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -204,7 +90,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{{ asset('modernize/assets') }}/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{{ asset('modernize/assets') }}/images/profile/user-1.jpg" alt="" width="35" height="35"
+                    class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
