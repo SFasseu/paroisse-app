@@ -109,11 +109,11 @@
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Anouncement</a>
                         <a href="donation.html" class="nav-item nav-link">Activity</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="{{ route('contact.index') }}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-lg-flex ms-auto">
-                        <a href="donation.html" class="nav-item nav-link auth-link">Login</a>
-                        <a href="contact.html" class="nav-item nav-link auth-link">Register</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link auth-link">Login</a>
+                        <a href="{{ route('register') }}" class="nav-item nav-link auth-link">Register</a>
                     </div>
                 </div>
             </nav>

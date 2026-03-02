@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+    <div class="row">
+        <div class="col-lg-8 d-flex align-items-strech">
+            <div class="card w-100">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                        <div class="mb-3 mb-sm-0">
+                            <h5 class="card-title fw-semibold">Sales Overview</h5>
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                        <div>
+                            <select class="form-select">
+                                <option value="1">March 2025</option>
+                                <option value="2">April 2025</option>
+                                <option value="3">May 2025</option>
+                                <option value="4">June 2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="chart"></div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

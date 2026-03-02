@@ -1,0 +1,3 @@
+.app-header,#main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .left-sidebar{
+    top: 0;
+}

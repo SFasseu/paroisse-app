@@ -20,16 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', [ContactController::class,'index']);
-Route::get('/contact/{contact}/show', [ContactController::class,'show']);
+Route::get('/contact', [ContactController::class,'index'])->name('contact.index');
+Route::get('/contact/{contact}/show', [ContactController::class,'show'])->name('contact.show');
 
-Route::get('/contact/create', [ContactController::class,'create']);
-Route::post('/contact/create', [ContactController::class,'store']);
+Route::get('/contact/create', [ContactController::class,'create'])->name('contact.create');
+Route::post('/contact/create', [ContactController::class,'store'])->name('contact.store');
 
-Route::get('/contact/{contact}/edit', [ContactController::class,'edit']);
-Route::put('/contact/{contact}/edit', [ContactController::class,'update']);
+Route::get('/contact/{contact}/edit', [ContactController::class,'edit'])->name('contact.edit');
+Route::put('/contact/{contact}/edit', [ContactController::class,'update'])->name('contact.update');
 
-Route::delete('/contact/{contact}/delete', [ContactController::class,'destroy']);
+Route::delete('/contact/{contact}/delete', [ContactController::class,'destroy'])->name('contact.destroy');
 
 Auth::routes();
 
