@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('payment_method_id')->nullable()->constrained('payment_methods')->onDelete('set null');
             
             $table->enum('payment_type', ['tithe', 'donation', 'offering', 'service']);
             $table->decimal('amount', 12, 2);
             $table->string('currency', 3)->default('XAF');
-            $table->enum('payment_method', ['cash', 'mobile_money', 'bank_transfer', 'check']);
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             
             $table->text('description')->nullable();
@@ -35,6 +35,7 @@ return new class extends Migration
             
             // Indexes
             $table->index('user_id');
+            $table->index('payment_method_id');
             $table->index('status');
             $table->index('payment_date');
             $table->index('payment_type');

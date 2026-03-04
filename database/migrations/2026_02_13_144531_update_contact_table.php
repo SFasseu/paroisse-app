@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('contact', 'contacts');
+        // Vérifier si la table contact existe avant de renommer
+        if (Schema::hasTable('contact') && !Schema::hasTable('contacts')) {
+            Schema::rename('contact', 'contacts');
+        }
     }
 
     /**
@@ -19,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::rename('contacts', 'contact');
+        if (Schema::hasTable('contacts') && !Schema::hasTable('contact')) {
+            Schema::rename('contacts', 'contact');
+        }
     }
 };

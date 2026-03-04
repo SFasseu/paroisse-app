@@ -11,10 +11,9 @@ class Payment extends Model
 
     protected $fillable = [
         'user_id',
-        'payment_type',
+        'payment_method_id',
         'amount',
         'currency',
-        'payment_method',
         'status',
         'description',
         'reference_number',
@@ -43,11 +42,144 @@ class Payment extends Model
     }
 
     /**
-     * Scope to filter by payment type
+     * Get the payment method associated with the payment
+     */
+    public function method()
+    {
+        return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
+    }
+
+    /**
+     * Get the payment system through method
+     */
+    public function system()
+    {
+        return $this->through($this->method())->has(PaymentSystem::class, 'payment_systems', 'id', 'payment_system_id');
+    }
+
+    /**
+     * Get all payment items for this payment
+     */
+    public function items()
+    {
+        return $this->hasMany(PaymentItem::class);
+    }
+
+    /**
+     * Get all mass intentions for this payment
+     */
+    public function massIntentions()
+    {
+        return $this->hasManyThrough(
+            MassIntention::class,
+            PaymentItem::class,
+            'payment_id',    // Foreign key on PaymentItem table
+            'id',            // Foreign key on MassIntention table
+            'id',            // Local key on Payment table
+            'itemable_id'    // Local key on PaymentItem table
+        )->where('payment_items.itemable_type', MassIntention::class);
+    }
+
+    /**
+     * Get all articles for this payment
+     */
+    public function articles()
+    {
+        return $this->hasManyThrough(
+            Article::class,
+            PaymentItem::class,
+            'payment_id',
+            'id',
+            'id',
+            'itemable_id'
+        )->where('payment_items.itemable_type', Article::class);
+    }
+
+    /**
+     * Get all parking for this payment
+     */
+    public function parkingItems()
+    {
+        return $this->hasManyThrough(
+            Parking::class,
+            PaymentItem::class,
+            'payment_id',
+            'id',
+            'id',
+            'itemable_id'
+        )->where('payment_items.itemable_type', Parking::class);
+    }
+
+    /**
+     * Scope to filter by payment type (based on itemable_type)
      */
     public function scopeOfType($query, $type)
     {
-        return $query->where('payment_type', $type);
+        return $query->whereHas('items', function ($q) use ($type) {
+            $q->where('itemable_type', $type);
+        });
+    }
+
+    /**
+     * Get the payment type(s) based on items
+     */
+    public function getPaymentType()
+    {
+        $types = $this->items->pluck('itemable_type')->unique()->toArray();
+        
+        if (empty($types)) {
+            return 'unknown';
+        }
+
+        return match (count($types)) {
+            1 => match ($types[0]) {
+                MassIntention::class => 'mass_intention',
+                Article::class => 'article',
+                Parking::class => 'parking',
+                default => 'unknown',
+            },
+            default => 'mixed', // Si le paiement contient plusieurs types
+        };
+    }
+
+    /**
+     * Get payment types (now based on items)
+     */
+    public static function getPaymentTypes()
+    {
+        return [
+            'mass_intention' => 'Intention de Messe',
+            'article' => 'Article',
+            'parking' => 'Parking',
+            'mixed' => 'Paiement Multiple',
+        ];
+    }
+
+    /**
+     * Scope to filter by payment type
+     * Kept for backward compatibility - now filters by itemable_type
+     */
+    public function scopeByType($query, $type)
+    {
+        $typeMap = [
+            'tithe' => MassIntention::class,
+            'donation' => MassIntention::class,
+            'offering' => MassIntention::class,
+            'service' => MassIntention::class,
+            'mass_intention' => MassIntention::class,
+            'article' => Article::class,
+            'parking' => Parking::class,
+        ];
+
+        $modelClass = $typeMap[$type] ?? null;
+        
+        if (!$modelClass) {
+            return $query;
+        }
+
+        return $query->whereHas('items', function ($q) use ($modelClass) {
+            $q->where('itemable_type', $modelClass);
+        });
     }
 
     /**
@@ -61,9 +193,9 @@ class Payment extends Model
     /**
      * Scope to filter by payment method
      */
-    public function scopeMethod($query, $method)
+    public function scopeByMethod($query, $methodId)
     {
-        return $query->where('payment_method', $method);
+        return $query->where('payment_method_id', $methodId);
     }
 
     /**
@@ -73,27 +205,19 @@ class Payment extends Model
     {
         $query = self::query();
         
-        if (!empty($filters['type'])) $query->ofType($filters['type']);
+        if (!empty($filters['type'])) $query->byType($filters['type']);
         if (!empty($filters['status'])) $query->status($filters['status']);
-        if (!empty($filters['method'])) $query->method($filters['method']);
+        if (!empty($filters['method'])) $query->byMethod($filters['method']);
         
         return $query->sum('amount');
     }
 
     /**
-     * Get payment types
-     */
-    public static function getPaymentTypes()
-    {
-        return ['tithe', 'donation', 'offering', 'service'];
-    }
-
-    /**
-     * Get payment methods
+     * Get payment methods (from database)
      */
     public static function getPaymentMethods()
     {
-        return ['cash', 'mobile_money', 'bank_transfer', 'check'];
+        return PaymentMethod::where('is_active', true)->get();
     }
 
     /**
@@ -104,3 +228,5 @@ class Payment extends Model
         return ['pending', 'confirmed', 'cancelled'];
     }
 }
+
+

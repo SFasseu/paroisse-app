@@ -1,37 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-lg border-0 church-form-container">
-            <div class="card-header text-white" style="background: linear-gradient(135deg, #4169E1, #2F5233);">
-                <h4 class="mb-0">
+<div class="row justify-content-center" style="min-height: calc(100vh - 150px);">
+    <div class="col-lg-7 col-xl-6 my-auto">
+        <div class="card shadow-lg border-0 church-form-container" style="border-radius: 2rem;">
+            <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #4169E1, #2F5233); border-radius: 2rem 2rem 0 0;">
+                <h3 class="mb-0 text-center">
                     <i class="fas fa-plus-circle me-2"></i> Créer un Nouveau Paiement
-                </h4>
+                </h3>
             </div>
 
-            <form action="{{ route('payments.store') }}" method="POST" class="church-form-body">
+            <form action="{{ route('payments.store') }}" method="POST" class="church-form-body p-5">
                 @csrf
                 
                 <div class="row">
-                    <!-- Type de Paiement -->
+                    <!-- Type d'Item -->
                     <div class="col-md-6 mb-3">
                         <label class="church-label">Type de Paiement</label>
-                        <select name="payment_type" class="form-control @error('payment_type') is-invalid @enderror" required>
+                        <select name="item_type" id="item_type" class="form-control @error('item_type') is-invalid @enderror" required onchange="updateItems()">
                             <option value="">-- Sélectionner --</option>
-                            @foreach($types as $type)
-                                <option value="{{ $type }}" @selected(old('payment_type') === $type)>
-                                    {{ ucfirst($type) }}
-                                </option>
-                            @endforeach
+                            <option value="mass_intention" @selected(old('item_type') === 'mass_intention')>Intention de Messe</option>
+                            <option value="article" @selected(old('item_type') === 'article')>Article</option>
+                            <option value="parking" @selected(old('item_type') === 'parking')>Parking</option>
                         </select>
-                        @error('payment_type') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('item_type') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <!-- Sélection Item -->
+                    <div class="col-md-6 mb-3">
+                        <label class="church-label">Sélectionner l'Item</label>
+                        <select name="item_id" id="item_id" class="form-control @error('item_id') is-invalid @enderror" required onchange="updateAmount()">
+                            <option value="">-- Sélectionner --</option>
+                        </select>
+                        @error('item_id') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Quantité -->
+                    <div class="col-md-6 mb-3">
+                        <label class="church-label">Quantité</label>
+                        <input type="number" name="quantity" id="quantity" class="form-control @error('quantity') is-invalid @enderror" 
+                               min="1" value="{{ old('quantity', 1) }}" required onchange="updateAmount()">
+                        @error('quantity') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Montant -->
                     <div class="col-md-6 mb-3">
                         <label class="church-label">Montant</label>
-                        <input type="number" name="amount" class="form-control @error('amount') is-invalid @enderror" 
+                        <input type="number" name="amount" id="amount" class="form-control @error('amount') is-invalid @enderror" 
                                step="0.01" min="100" placeholder="10000" value="{{ old('amount') }}" required>
                         @error('amount') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -52,15 +69,15 @@
                     <!-- Méthode de Paiement -->
                     <div class="col-md-6 mb-3">
                         <label class="church-label">Méthode de Paiement</label>
-                        <select name="payment_method" class="form-control @error('payment_method') is-invalid @enderror" required>
+                        <select name="payment_method_id" class="form-control @error('payment_method_id') is-invalid @enderror" required>
                             <option value="">-- Sélectionner --</option>
                             @foreach($methods as $method)
-                                <option value="{{ $method }}" @selected(old('payment_method') === $method)>
-                                    {{ ucfirst(str_replace('_', ' ', $method)) }}
+                                <option value="{{ $method->id }}" @selected(old('payment_method_id') == $method->id)>
+                                    {{ $method->name }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('payment_method') <span class="text-danger">{{ $message }}</span> @enderror
+                        @error('payment_method_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
 
@@ -106,6 +123,48 @@
                     </a>
                 </div>
             </form>
+
+            <script>
+                const massIntentions = {!! json_encode($massIntentions->pluck('name', 'id')) !!};
+                const articles = {!! json_encode($articles->pluck('name', 'id')) !!};
+                const parkings = {!! json_encode($parkings->pluck('location', 'id')) !!};
+                
+                const itemPrices = {
+                    mass_intention: {!! json_encode($massIntentions->pluck('suggested_amount', 'id')) !!},
+                    article: {!! json_encode($articles->pluck('price', 'id')) !!},
+                    parking: {!! json_encode($parkings->pluck('daily_rate', 'id')) !!},
+                };
+
+                function updateItems() {
+                    const type = document.getElementById('item_type').value;
+                    const itemSelect = document.getElementById('item_id');
+                    itemSelect.innerHTML = '<option value="">-- Sélectionner --</option>';
+                    
+                    let items = {};
+                    if (type === 'mass_intention') items = massIntentions;
+                    else if (type === 'article') items = articles;
+                    else if (type === 'parking') items = parkings;
+                    
+                    for (const [id, name] of Object.entries(items)) {
+                        const option = document.createElement('option');
+                        option.value = id;
+                        option.text = name;
+                        itemSelect.appendChild(option);
+                    }
+                }
+
+                function updateAmount() {
+                    const type = document.getElementById('item_type').value;
+                    const itemId = document.getElementById('item_id').value;
+                    const quantity = document.getElementById('quantity').value || 1;
+                    
+                    if (type && itemId && itemPrices[type] && itemPrices[type][itemId]) {
+                        const unitPrice = itemPrices[type][itemId];
+                        const totalAmount = unitPrice * quantity;
+                        document.getElementById('amount').value = totalAmount;
+                    }
+                }
+            </script>
         </div>
     </div>
 </div>
